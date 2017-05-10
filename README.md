@@ -1,4 +1,4 @@
-# Descciption
+# Description
 
 I am Nimisha Peddakam, pursuing Masters in Computer Science at Northeastern University, Boston. I hold a Bachelors degree in Computer Science. I have worked as a Software Engineer at Microsoft for 1.5 years after my undergrad.
 
