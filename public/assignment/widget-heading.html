@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Widget-Heading</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+    <!--<nav class="navbar-default navbar-fixed-top pagenavbar">-->
+        <!--<div class="container-fluid">-->
+            <!--<div class="navbar-text pull-left">-->
+                <!--<a href="widget-list.html">-->
+                    <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--<div class="navbar-header">-->
+                <!--<a class="navbar-brand">-->
+                    <!--<strong>Widget Edit</strong>-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--<div class="navbar-text pull-right">-->
+                <!--<a href="widget-list.html">-->
+                    <!--<span class="glyphicon glyphicon-ok"></span>-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</nav>-->
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="navbar-brand pull-left">
+                        <a href="widget-list.html">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        Widget Edit
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="navbar-brand pull-right">
+                        <a href="widget-list.html">
+                            <span class="wd-widget-heading-gly glyphicon glyphicon-ok"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+
+        <label for="name">Name</label>
+        <input class="form-control"
+               placeholder="facebook"
+               value="top heading"
+               id="name"/>
+
+        <label for="text">Text</label>
+        <input class="form-control"
+               placeholder="facebook"
+               value="US Senate Reaches Compromise"
+               id="text"/>
+
+        <label for="size">Size</label>
+        <select id="size" class="form-control">
+            <option>1 (X-Large)</option>
+            <option>2 (Larger)</option>
+            <option>3 (Large)</option>
+            <option>4 (Medium)</option>
+            <option>5 (Small)</option>
+            <option>6 (Smallest)</option>
+        </select>
+
+        <a href="widget-list.html" class="btn btn-block btn-danger">Delete</a>
+
+    </div>
+
+    <nav class="pagenavbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <span class="glyphicon glyphicon-user"></span>
+            </div>
+        </div>
+    </nav>
+
+</body>
+
+</html>
