@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Widget-youtube</title>
+    <title>Widget-Image</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -45,7 +45,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="navbar-brand pull-right">
                     <a href="widget-list.html">
-                        <span class="glyphicon glyphicon-ok"></span>
+                        <span class="wd-widget-heading-gly glyphicon glyphicon-ok"></span>
                     </a>
                 </div>
             </div>
@@ -53,27 +53,44 @@
     </div>
 </nav>
 
+
 <div class="container-fluid">
-    <div class="form-group">
 
-        <label for="usr">Name</label>
-        <input type="text" class="form-control" id="usr" placeholder="Name">
+    <label for="name">Name</label>
+    <input class="form-control"
+           placeholder="facebook"
+           value="top heading"
+           id="name"/>
 
-    </div>
-    <div class="form-group">
-        <label for="desc">Text</label>
-        <input type="text" class="form-control" id="desc" placeholder="Text">
-    </div>
-    <div class="form-group">
-        <label for="url">URL</label>
-        <input type="text" class="form-control" id="url" placeholder="https://youtu.be/C0DPdy98e4c">
-    </div>
-    <div class="form-group">
-        <label for="wd">Width</label>
-        <input type="text" class="form-control" id="wd" placeholder="100%">
-    </div>
-    <a class="btn btn-danger  btn-block" href="widget-list.html">Delete</a>
+    <label for="text">Text</label>
+    <input class="form-control"
+           placeholder="facebook"
+           value="US Senate Reaches Compromise"
+           id="text"/>
+
+    <label for="url">URL</label>
+    <input class="form-control"
+           placeholder="https://google.com"
+           value="https://google.com"
+           id="url"/>
+
+    <label for="width">Width</label>
+    <input class="form-control"
+           placeholder="100%"
+           value="100%"
+           id="width"/>
+
+    <label for="file">Upload</label>
+    <input id="file" multiple type="file" class="form-control"/>
+
+    <a href=""
+       class="btn btn-block btn-primary">Upload Image</a>
+
+    <a href="widget-list.html"
+       class="btn btn-block btn-danger">Delete</a>
+
 </div>
+
 
 <nav class="pagenavbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

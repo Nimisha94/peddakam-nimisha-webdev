@@ -68,6 +68,7 @@ body
     opacity: 0.9;
     padding: 5px;
     border-bottom-left-radius: 10px;
+    right:30px;
 }
 
 .glyphicon-ok
@@ -86,9 +87,41 @@ body
     {
         padding-left:0px;
     }
+    .wd-website-gly
+    {
+        visibility: visible;
+    }
+    .wd-website-edit-right-navbar
+    {
+        left:0px;
+    }
+    .wd-website-edit-gly,
+    .wd-widget-gly,
     .wd-widget-heading-gly
     {
         right:-15px;
+    }
+}
+.wd-website-edit-gly-plus
+{
+    right:-15px;
+}
+@media (min-width: 768px) {
+    .wd-website-gly
+    {
+        visibility: hidden;
+    }
+    .wd-website-edit-nav
+    {
+        left:-20px;
+    }
+    .wd-website-edit-right-navbar
+    {
+        left:-30px;
+    }
+    .wd-website-edit-gly
+    {
+        right:-45px;
     }
 }
 
@@ -103,12 +136,29 @@ body
 .wd-website-edit-navbar
 {
     padding-left:0px;
-}
-.wd-website-edit-gly
-{
-    right:0px;
+    margin-left: 0px;
 }
 .wd-widget .glyphicon-cog
 {
     color: black;
+}
+.wd-website-navbar
+{
+    padding-left: 0px;
+}
+.wd-website-gly
+{
+    left:-15px;
+}
+.navbar-text span
+{
+    color: white;
+    font-size: 16px;
+}
+a:hover{
+    text-decoration: none;
+}
+.wd-widget-list-gly
+{
+    right:0px;
 }
