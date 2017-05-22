@@ -125,7 +125,8 @@ body
     {
         right:-15px;
     }
-    .wd-gly-user
+    .wd-gly-user,
+    .wd-widget-list-gly
     {
         right:15px;
     }
@@ -135,7 +136,8 @@ body
     }
 }
 @media (min-width: 768px) {
-    .wd-gly-user
+    .wd-gly-user,
+    .wd-widget-list-gly
     {
         right:0px !important;
     }
@@ -203,10 +205,7 @@ body
 a:hover{
     text-decoration: none;
 }
-.wd-widget-list-gly
-{
-    right:0px;
-}
+
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
