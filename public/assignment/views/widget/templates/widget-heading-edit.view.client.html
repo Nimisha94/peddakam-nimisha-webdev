@@ -1,0 +1,68 @@
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="wd-navbar-edit navbar-brand pull-left">
+                        <a class="wd-gly-left"
+                           ng-href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        Widget Edit
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="navbar-brand pull-right">
+                        <a  ng-click="model.editHeading(model.name,model.text,model.size)">
+                            <span class="wd-widget-heading-gly glyphicon glyphicon-ok"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+
+        <label for="name">Name</label>
+        <input class="form-control"
+               ng-model="model.name"
+               placeholder="facebook"
+               value="top heading"
+               id="name"/>
+
+        <label for="text">Text</label>
+        <input class="form-control"
+               ng-model="model.text"
+               placeholder="facebook"
+               value="US Senate Reaches Compromise"
+               id="text"/>
+
+        <label for="size">
+            Size
+        </label>
+        <select id="size"
+                class="form-control"
+                ng-init="model.size "
+                ng-model="model.size">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+        </select>
+
+        <a ng-click="model.deleteHeading()" class="btn btn-block btn-danger">Delete</a>
+
+    </div>
+
+    <nav class="pagenavbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <a ng-href="#!/user/{{model.userId}}">
+                    <span class="wd-gly-widget-user glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+

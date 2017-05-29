@@ -1,0 +1,73 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="wd-navbar-edit navbar-brand pull-left">
+                    <a class="wd-gly-left"
+                       ng-href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    Widget Edit
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="navbar-brand pull-right">
+                    <a ng-click="model.editYouTube()">
+                        <span class="wd-widget-gly glyphicon glyphicon-ok"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="form-group">
+
+        <label for="usr">Name</label>
+        <input type="text"
+               ng-model="model.name"
+               class="form-control"
+               id="usr"
+               placeholder="Name">
+
+    </div>
+    <div class="form-group">
+        <label for="desc">Text</label>
+        <input type="text"
+               ng-model="model.text"
+               class="form-control"
+               id="desc"
+               placeholder="Text">
+    </div>
+    <div class="form-group">
+        <label for="url">URL</label>
+        <input type="text"
+               ng-model="model.url"
+               class="form-control"
+               id="url"
+               placeholder="https://youtu.be/C0DPdy98e4c">
+    </div>
+    <div class="form-group">
+        <label for="wd">Width</label>
+        <input type="text"
+               ng-model="model.width"
+               class="form-control"
+               id="wd"
+               placeholder="100%">
+    </div>
+    <a class="btn btn-danger  btn-block"
+       ng-click="model.deleteYouTube()">
+        Delete
+    </a>
+</div>
+
+<nav class="pagenavbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#!/user/{{model.userId}}">
+                <span class="wd-gly-widget-user glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>

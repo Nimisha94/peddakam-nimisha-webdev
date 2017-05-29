@@ -1,0 +1,44 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="wd-navbar-edit navbar-brand pull-left">
+                    <a class="wd-gly-left" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    Widgets
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="navbar-text pull-right">
+                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                        <span class="wd-widget-list-gly glyphicon glyphicon-plus"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div ng-repeat="widget in model.widgets" class="wd-widget">
+        <div class="wd-widget-toolbar">
+            <a ng-href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                <span class="glyphicon glyphicon-cog"></span>
+            </a>
+            <span class="glyphicon glyphicon-align-justify"></span>
+        </div>
+        <div ng-include="model.widgetUrl(widget)"></div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#!/user/{{model.userId}}">
+                <span class="wd-gly-user glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>
