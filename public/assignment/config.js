@@ -7,36 +7,6 @@
         $routeProvider
             .when('/',{
                 templateUrl:'home.html'
-            })
-            .when('/user/:uid/website',{
-                templateUrl:'views/website/templates/website-list.view.client.html',
-                controller:'WebsiteListController',
-                controllerAs:'model'
-            })
-            .when('/user/:uid/website/new',{
-                templateUrl:'views/website/templates/website-new.view.client.html',
-                controller:'NewWebsiteController',
-                controllerAs:'model'
-            })
-            .when('/user/:uid/website/:wid',{
-                templateUrl:'views/website/templates/website-edit.view.client.html',
-                controller:'EditWebsiteController',
-                controllerAs:'model'
-            })
-            .when('/user/:uid/website/:wid/page/:pid/widget', {
-                templateUrl: 'views/widget/templates/widget-list.view.client.html',
-                controller:'WidgetListController',
-                controllerAs:'model'
-            })
-            .when('/user/:uid/website/:wid/page/:pid/widget/new', {
-                templateUrl: 'views/widget/templates/widget-chooser.view.client.html',
-                controller:'NewWidgetController',
-                controllerAs:'model'
-            })
-            .when('/user/:uid/website/:wid/page/:pid/widget/:wgid',{
-                templateUrl:'views/widget/templates/widget-edit.view.client.html',
-                controller:'EditWidgetController',
-                controllerAs:'model'
             });
     }
 })();
