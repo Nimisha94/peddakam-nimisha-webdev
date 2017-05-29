@@ -9,11 +9,10 @@
         model.user=userService.findUserById(model.userId);
 
         //event handlers
-        model.update=update();
+        model.update=update;
         
         function update() {
             var usr={
-                //{_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
                 _id:model.user._id,
                 username:model.user.username,
                 password:model.user.password,
