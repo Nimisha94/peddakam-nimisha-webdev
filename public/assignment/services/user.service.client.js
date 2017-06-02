@@ -3,7 +3,7 @@
         .module('WebAppMaker')
         .factory('userService', userService);
     
-    function userService() {
+    function userService($http) {
         var users=
             [
                 {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -24,15 +24,22 @@
         return api;
         
         function deleteUser(userId) {
-            var user=findUserById(userId);
+            /*var user=findUserById(userId);
             var ind=users.indexOf(user);
-            users.splice(ind);
+            users.splice(ind);*/
+            var url='/api/user/'+userId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                })
         }
         
         function updateUser(userId, user) {
-            var u=findUserById(userId);
-            var ind=users.indexOf(u);
-            users[ind]=user;
+            var url='/api/user/'+userId;
+            return $http.put(url, user)
+                .then(function (response) {
+                    return response.data;
+                })
         }
         
         function createUser(user) {
@@ -53,14 +60,19 @@
         }
 
         function findUserById(userId) {
-            for(var u in users)
+            /*for(var u in users)
             {
                 if(users[u]._id===userId)
                 {
                     return users[u];
                 }
             }
-            return null;
+            return null;*/
+            var url = "/api/user/"+userId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function findUserByCredentials(username, password) {

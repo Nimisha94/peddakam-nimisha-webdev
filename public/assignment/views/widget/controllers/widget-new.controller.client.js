@@ -18,7 +18,7 @@
         function createHeading() {
             var heading={
                 widgetType:"HEADING",
-                size:0,
+                size:1,
                 text:""
             };
             wdgt=WidgetService.createWidget(model.pageId,heading);

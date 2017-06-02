@@ -6,7 +6,11 @@
     function ProfileController($routeParams, userService) {
         var model=this;
         model.userId=$routeParams['uid'];
-        model.user=userService.findUserById(model.userId);
+
+        userService
+            .findUserById(model.userId)
+            .then(renderUser, userError);
+        //model.user=userService.findUserById(model.userId);
 
         //event handlers
         model.update=update;
@@ -19,7 +23,25 @@
                 firstName:model.user.firstName,
                 lastName:model.user.lastName
             };
-            userService.updateUser(model.userId,usr);
+            userService
+                .updateUser(model.userId,usr)
+                .then(userUpdateSuccessful, userUpdateError);
+        }
+
+        function renderUser (user) {
+            model.user = user;
+        }
+
+        function userError(error) {
+            model.message = "User not found";
+        }
+
+        function userUpdateSuccessful() {
+            model.message="User has been updated successfully!"
+        }
+
+        function userUpdateError() {
+            model.message="User could not be updated";
         }
     }
 })();
