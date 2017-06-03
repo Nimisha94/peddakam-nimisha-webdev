@@ -9,38 +9,77 @@
 
 
         function register(username, password, password1) {
-            if(username === null || username === ''||typeof username === 'undefined')
-            {
+            if (username === null || username === '' || typeof username === 'undefined') {
                 model.error = "Username field is required";
                 return;
             }
-            else if(password === null ||password === '' || typeof password ==='undefined')
-            {
+            else if (password === null || password === '' || typeof password === 'undefined') {
                 model.error = "Password field is required";
                 return;
             }
-            else if(password!==password1) {
-               model.error = "Passwords should match";
-               return;
-           }
-           else {
-                var user = userService.findUserByUsername(username);
-                if(user === null)
-                {
+            else if (password !== password1) {
+                model.error = "Passwords should match";
+                return;
+            }
+            else {
+                //var user = userService.findUserByUsername(username);
+                userService
+                    .findUserByUsername(username)
+                    .then(renderUser, errorFindUser);
+
+                /*if(user === null)
+                 {
+                 var newuser = {
+                 username: username,
+                 password: password
+                 };
+                 //var usr = userService.createUser(newuser);
+                 userService
+                 .createUser(newuser)
+                 .then(redirectUser, errorUser);
+
+                 }
+                 else {
+                 model.error = "Sorry! Username " + username + " is already taken";
+                 return;
+                 }
+                 }*/
+            }
+
+            function renderUser(user) {
+                if(user === null) {
                     var newuser = {
                         username: username,
                         password: password
                     };
-                    var usr = userService.createUser(newuser);
-                    $location.url('/user/' + usr._id);
-
+                    //var usr = userService.createUser(newuser);
+                    userService
+                        .createUser(newuser)
+                        .then(redirectUser, errorUser);
                 }
-                else {
-                    model.error = "Sorry! Username " + username + " is already taken";
+                else
+                {
+                    model.error = "Sorry! Username  is already taken";
                     return;
                 }
+                //var usr = userService.createUser(newuser);
+            }
+
+            function errorFindUser() {
+                model.error = "Error occured. Try again later!";
+                return;
             }
         }
+
+        function redirectUser(user) {
+            $location.url('/user/' + user._id);
+        }
+
+        function errorUser(user) {
+            model.message='Could not register user';
+        }
+
+
     }
 
 })();

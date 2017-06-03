@@ -31,7 +31,7 @@
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;
-                })
+                });
         }
         
         function updateUser(userId, user) {
@@ -39,24 +39,34 @@
             return $http.put(url, user)
                 .then(function (response) {
                     return response.data;
-                })
+                });
         }
         
         function createUser(user) {
-            user._id=(new Date().getTime()) + "";
+            /*user._id=(new Date().getTime()) + "";
             users.push(user);
-            return user;
+            return user;*/
+            var url='/api/user';
+            return $http.post(url,user)
+                .then(function (response) {
+                    return response.data;
+                });
         }
         
         function findUserByUsername(username) {
-            for(var u in users)
+            /*for(var u in users)
             {
                 if(users[u].username===username)
                 {
                     return users[u];
                 }
             }
-            return null;
+            return null;*/
+            var url='/api/user?username='+username;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                })
         }
 
         function findUserById(userId) {
@@ -76,7 +86,7 @@
         }
 
         function findUserByCredentials(username, password) {
-            var found=null;
+            /*var found=null;
             for(var u in users)
             {
                 if(users[u].username===username && users[u].password===password)
@@ -84,7 +94,12 @@
                     return users[u];
                 }
             }
-            return null;
+            return null;*/
+            var url='/api/user?username='+username+'&password='+password;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                })
         }
     }
 })();

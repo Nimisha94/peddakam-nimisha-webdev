@@ -14,17 +14,19 @@
                 model.message='Username is required';
                 return;
             }
-            var found=userService.findUserByCredentials(username, password);
-            if(found!==null)
-            {
-                $location.url('/user/'+found._id);
+            //var found=userService.findUserByCredentials(username, password);
+            userService
+                .findUserByCredentials(username,password)
+                .then(redirect,errorUser);
+        }
+
+        function redirect(user){
+            $location.url('/user/'+user._id);
                 // $scope.message='welcome '+users[u].username;
-            }
-            else
-            {
-                model.message='Invalid credentials';
-            }
+        }
+
+        function errorUser() {
+            model.message='Invalid credentials';
         }
     }
-
 })();
