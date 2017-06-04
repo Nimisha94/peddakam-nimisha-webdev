@@ -3,7 +3,7 @@
         .module('WebAppMaker')
         .factory('WidgetService',WidgetService);
 
-    function WidgetService() {
+    function WidgetService($http) {
 
         var widgets=
             [
@@ -29,14 +29,20 @@
         return api;
         
         function createWidget(pageId, widget) {
-            widget._id=(new Date().getTime())+"";
+            /*widget._id=(new Date().getTime())+"";
             widget.pageId=pageId;
             widgets.push(widget);
-            return widget;
+            return widget;*/
+            var url='/api/page/'+pageId+'/widget';
+            return $http.post(url, widget)
+                .then(function (response) {
+                    return response.data;
+                })
+
         }
 
         function findWidgetsByPageId(pageId) {
-            var wdgts=[];
+            /*var wdgts=[];
             for(var w in widgets)
             {
                 if(widgets[w].pageId === pageId)
@@ -44,30 +50,50 @@
                     wdgts.push(widgets[w]);
                 }
             }
-            return wdgts;
+            return wdgts;*/
+            var url='/api/page/'+pageId+'/widget';
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                })
         }
 
         function findWidgetById(widgetId) {
-            for(var w in widgets)
+            /*for(var w in widgets)
             {
                 if(widgets[w]._id === widgetId)
                 {
                     return widgets[w];
                 }
             }
-            return null;
+            return null;*/
+            var url='/api/widget/'+widgetId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                })
         }
 
         function updateWidget(widgetId, widget) {
-            var wdgt=findWidgetById(widgetId);
+           /* var wdgt=findWidgetById(widgetId);
             var ind=widgets.indexOf(wdgt);
-            widgets[ind]=widget;
+            widgets[ind]=widget;*/
+           var url='/api/widget/'+widgetId;
+           return $http.put(url, widget)
+               .then(function (response) {
+                   return response.data;
+               })
         }
 
         function deleteWidget(widgetId) {
-            var wdgt=findWidgetById(widgetId);
+            /*var wdgt=findWidgetById(widgetId);
             var ind=widgets.indexOf(wdgt);
-            widgets.splice(ind,1);
+            widgets.splice(ind,1);*/
+            var url='/api/widget/'+widgetId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                })
         }
     }
 })();

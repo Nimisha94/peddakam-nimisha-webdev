@@ -9,12 +9,23 @@
         model.websiteId=$routeParams['wid'];
         model.pageId=$routeParams['pid'];
         model.widgetId=$routeParams['wgid'];
-        model.widgets=WidgetService.findWidgetsByPageId(model.pageId);
+        //model.widgets=WidgetService.findWidgetsByPageId(model.pageId);
+        WidgetService
+            .findWidgetsByPageId(model.pageId)
+            .then(renderWidgets, errorWidget);
 
         //event handlers
         model.trust = trust;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.widgetUrl = widgetUrl;
+
+        function renderWidgets(widgets) {
+            model.widgets=widgets;
+        }
+
+        function errorWidget() {
+            model.message='Error occured. Try again later';
+        }
 
         function widgetUrl(widget) {
             var url = 'views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'.view.client.html';

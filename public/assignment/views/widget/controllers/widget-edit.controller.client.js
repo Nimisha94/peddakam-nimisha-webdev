@@ -9,20 +9,30 @@
         model.websiteId=$routeParams['wid'];
         model.pageId=$routeParams['pid'];
         model.widgetId=$routeParams['wgid'];
-        model.widget=WidgetService.findWidgetById(model.widgetId);
-        model.name=model.widget.widgetType;
-        model.text=model.widget.text;
-        model.size=model.widget.size;
-        model.url=model.widget.url;
-        model.width=model.widget.width;
+        //model.widget=WidgetService.findWidgetById(model.widgetId);
+        WidgetService
+            .findWidgetById(model.widgetId)
+            .then(renderWidget, errorWidget);
+
 
         //event handlers
         model.editHeading=editHeading;
-        model.deleteHeading=deleteHeading;
+        model.deleteWidget=deleteWidget;
         model.editImage=editImage;
-        model.deleteImage=deleteImage;
         model.editYouTube=editYouTube;
-        model.deleteYouTube=deleteYouTube;
+
+        function renderWidget(widget) {
+            model.widget=widget;
+            model.name=model.widget.widgetType;
+            model.text=model.widget.text;
+            model.size=model.widget.size;
+            model.url=model.widget.url;
+            model.width=model.widget.width;
+        }
+
+        function errorWidget() {
+            model.message='Error occured. Try again later';
+        }
 
         function editHeading() {
             var wdgt={
@@ -32,15 +42,11 @@
                     text:model.text,
                     size:model.size
             };
-            WidgetService.updateWidget(model.widgetId,wdgt);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            WidgetService
+                .updateWidget(model.widgetId,wdgt)
+                .then(redirectWidget, errorWidget);
         }
 
-        function deleteHeading() {
-            WidgetService.deleteWidget(model.widgetId);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
-        }
-        
         function editImage() {
             var wdImage={
                 _id:model.widget._id,
@@ -49,13 +55,10 @@
                 width:model.width,
                 url:model.url
             };
-            WidgetService.updateWidget(model.widgetId,wdImage);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
-        }
-
-        function deleteImage() {
-            WidgetService.deleteWidget(model.widgetId);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            WidgetService
+                .updateWidget(model.widgetId,wdImage)
+                .then(redirectWidget, errorWidget);
+            //$location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
         }
 
         function editYouTube() {
@@ -66,13 +69,22 @@
                 width:model.width,
                 url:model.url
             };
-            WidgetService.updateWidget(model.widgetId,youtube);
+            WidgetService
+                .updateWidget(model.widgetId,youtube)
+                .then(redirectWidget, errorWidget);
+           // $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+        }
+
+        function redirectWidget() {
             $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
         }
 
-        function deleteYouTube() {
-            WidgetService.deleteWidget(model.widgetId);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+        function deleteWidget() {
+            WidgetService
+                .deleteWidget(model.widgetId)
+                .then(redirectWidget, errorWidget);
+            //$location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
         }
+
     }
 })();
