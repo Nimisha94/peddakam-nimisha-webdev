@@ -21,12 +21,18 @@
         }
 
         function redirect(user){
-            $location.url('/user/'+user._id);
+            if(user === null)
+            {
+                model.message='Invalid credentials';
+            }
+            else {
+                $location.url('/user/' + user._id);
                 // $scope.message='welcome '+users[u].username;
+            }
         }
 
         function errorUser() {
-            model.message='Invalid credentials';
+            model.message='Error occured. Try again later';
         }
     }
 })();

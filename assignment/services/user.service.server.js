@@ -21,7 +21,7 @@ function findUserById(req, res) {
             return;
         }
     }
-    res.sendStatus(404);
+    res.json(null);
 }
 
 function updateUser(req, res) {
@@ -90,7 +90,7 @@ function findUserByCredentials(req, res) {
             return;
         }
     }
-    res.sendStatus(404);
+    res.json(null);
 }
 
 function findUserByUsername(req, res) {

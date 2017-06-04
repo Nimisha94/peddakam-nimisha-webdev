@@ -21,7 +21,8 @@
                 username:model.user.username,
                 password:model.user.password,
                 firstName:model.user.firstName,
-                lastName:model.user.lastName
+                lastName:model.user.lastName,
+                email:model.user.email
             };
             userService
                 .updateUser(model.userId,usr)
@@ -29,11 +30,17 @@
         }
 
         function renderUser (user) {
-            model.user = user;
+            if(user) {
+                model.user = user;
+            }
+            else
+            {
+                model.message = "User not found";
+            }
         }
 
         function userError(error) {
-            model.message = "User not found";
+            model.message = "Error occured. Try again later.";
         }
 
         function userUpdateSuccessful() {
