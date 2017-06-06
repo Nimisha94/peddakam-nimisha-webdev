@@ -63,7 +63,7 @@
 
         function editYouTube() {
             var youtube={
-                _id: (new Date().getTime())+"",
+                _id: model.widget._id,
                 widgetType:model.name,
                 pageId:model.pageId,
                 width:model.width,

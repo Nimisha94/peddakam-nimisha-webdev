@@ -52,6 +52,12 @@
            id="width"/>
 
     <label>Upload Image</label>
+
+    <a class="btn btn-primary btn-block"
+    ng-href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/search">
+        Search
+    </a>
+
     <form action="/api/upload"   method="post" enctype="multipart/form-data">
         <input  name="myFile"    type="file" class="form-control"/>
         <input  name="userId"    value="{{model.userId}}"       style="display: none"/>

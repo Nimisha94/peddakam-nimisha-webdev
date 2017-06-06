@@ -5,7 +5,7 @@
 
     function WidgetService($http) {
 
-        var widgets=
+        /*var widgets=
             [
                 { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
                 { "_id": "234", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -16,14 +16,15 @@
                 { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
                     "url": "https://youtu.be/AM2Ivdi9c4E" },
                 { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
-            ];
+            ];*/
 
         var api={
             createWidget:createWidget,
             findWidgetsByPageId:findWidgetsByPageId,
             findWidgetById:findWidgetById,
             updateWidget:updateWidget,
-            deleteWidget:deleteWidget
+            deleteWidget:deleteWidget,
+            reorderWidget:reorderWidget
         };
 
         return api;
@@ -91,6 +92,15 @@
             widgets.splice(ind,1);*/
             var url='/api/widget/'+widgetId;
             return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                })
+        }
+
+        function reorderWidget(start, stop, pgid) {
+
+            var url = '/api/page/'+pgid+'/widget?initial='+start+'&final='+stop;
+            return $http.put(url)
                 .then(function (response) {
                     return response.data;
                 })

@@ -21,6 +21,7 @@ app.get('/api/widget/:widgetId', findWidgetById);
 app.put('/api/widget/:widgetId', updateWidget);
 app.delete('/api/widget/:widgetId', deleteWidget);
 app.post ("/api/upload", upload.single('myFile'), uploadImage);
+app.put('/api/page/:pageId/widget', reorderWidget);
 
 function createWidget(req, res) {
     var pageId=req.params.pageId;
@@ -125,5 +126,51 @@ function uploadImage(req, res) {
     var callbackUrl   = "/assignment/#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
 
     res.redirect(callbackUrl);
+}
+
+function reorderWidget(req, res) {
+    var start = req.query.initial;
+    var stop = req.query.final;
+    var pageId=req.params.pageId;
+    var wdgs=[];
+    var wid=widgets;
+    var cnt1=0;
+    var cnt2=0;
+    var cnt=0;
+    var fin=[];
+    for(var w in widgets)
+    {
+        if(widgets[w].pageId === pageId)
+        {
+            wdgs.push(widgets[w]);
+        }
+    }
+    var widget=wdgs[start];
+    wdgs.splice(start,1);
+    w1=wdgs.slice(0,stop);
+    w2=wdgs.slice(stop,wdgs.length);
+    w1.push(widget);
+    w1=w1.concat(w2);
+    // widgets=w1;
+    while(cnt2<wid.length)
+    {
+        if(wid[cnt2] === w1[cnt1])
+        {
+            fin[cnt++]=wid[cnt2];
+            cnt1++;
+            cnt2++;
+        }
+        else if(w1.indexOf(wid[cnt2]) === -1)
+        {
+            fin[cnt++]=wid[cnt2++];
+        }
+        else if(w1.indexOf(wid[cnt2]) >= 0)
+        {
+            fin[cnt++]=w1[cnt1++];
+            cnt2++;
+        }
+    }
+    widgets=fin;
+    res.json(widgets);
 }
 
