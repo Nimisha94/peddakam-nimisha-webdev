@@ -9,9 +9,14 @@
         model.websiteId=$routeParams['wid'];
         model.pageId=$routeParams['pid'];
         model.widgetId=$routeParams['wgid'];
-        WidgetService
-            .findWidgetById(model.widgetId)
-            .then(renderWidget, errorWidget);
+
+        function init() {
+            WidgetService
+                .findWidgetById(model.widgetId)
+                .then(renderWidget, errorWidget);
+        }
+
+        init();
 
         //event handlers
         model.searchPhotos=searchPhotos;

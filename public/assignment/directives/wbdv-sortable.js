@@ -10,7 +10,6 @@
     function wdDraggable($http, $routeParams, WidgetService){
 
         function linkFunction(scope, element) {
-            console.log('htfcvg');
             var start = null;
             var stop = null;
             $(element).sortable({
@@ -23,7 +22,6 @@
                     var pgid =$routeParams['pid'];
                     WidgetService.reorderWidget(start, stop, pgid)
                         .then(function (response) {
-                            console.log(response.data);
                         })
                 }
             });

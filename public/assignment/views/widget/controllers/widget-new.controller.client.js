@@ -21,7 +21,6 @@
                 size:1,
                 text:""
             };
-            //wdgt=WidgetService.createWidget(model.pageId,heading);
             WidgetService
                 .createWidget(model.pageId, heading)
                 .then(redirect, errorWidget);
@@ -40,11 +39,9 @@
                 widgetType:"HTML",
                 text:""
             };
-            //wdgt=WidgetService.createWidget(model.pageId,html);
             WidgetService
                 .createWidget(model.pageId, html)
                 .then(redirect, errorWidget);
-            //$location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wdgt._id);
         }
 
         function createImage() {
@@ -53,26 +50,20 @@
                 width:"100%",
                 url:""
             };
-            //wdgt=WidgetService.createWidget(model.pageId,image);
             WidgetService
                 .createWidget(model.pageId, image)
                 .then(redirect, errorWidget);
-            //$location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wdgt._id);
         }
 
         function createYouTube() {
-            //{ "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-            //"url": "https://youtu.be/AM2Ivdi9c4E" },
             var youtube={
                 widgetType:"YOUTUBE",
                 width:"100%",
                 url:""
             };
-            //wdgt=WidgetService.createWidget(model.pageId,youtube);
             WidgetService
                 .createWidget(model.pageId, youtube)
                 .then(redirect, errorWidget);
-            //$location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wdgt._id);
         }
     }
 })();

@@ -9,11 +9,14 @@
         model.websiteId=$routeParams['wid'];
         model.pageId=$routeParams['pid'];
         model.widgetId=$routeParams['wgid'];
-        //model.widget=WidgetService.findWidgetById(model.widgetId);
-        WidgetService
-            .findWidgetById(model.widgetId)
-            .then(renderWidget, errorWidget);
 
+        function init() {
+            WidgetService
+                .findWidgetById(model.widgetId)
+                .then(renderWidget, errorWidget);
+        }
+
+        init();
 
         //event handlers
         model.editHeading=editHeading;
@@ -58,7 +61,6 @@
             WidgetService
                 .updateWidget(model.widgetId,wdImage)
                 .then(redirectWidget, errorWidget);
-            //$location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
         }
 
         function editYouTube() {
@@ -72,7 +74,6 @@
             WidgetService
                 .updateWidget(model.widgetId,youtube)
                 .then(redirectWidget, errorWidget);
-           // $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
         }
 
         function redirectWidget() {
@@ -83,7 +84,6 @@
             WidgetService
                 .deleteWidget(model.widgetId)
                 .then(redirectWidget, errorWidget);
-            //$location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
         }
 
     }

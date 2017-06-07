@@ -8,15 +8,18 @@
         model.userId=$routeParams['uid'];
         model.websiteId=$routeParams['wid'];
         model.pageId=$routeParams['pid'];
-        //model.pages=PageService.findPageByWebsiteId(model.websiteId);
-        PageService
-            .findPageByWebsiteId(model.websiteId)
-            .then(renderPages, errorPage);
 
-        //model.page=PageService.findPageById(model.pageId);
-        PageService
-            .findPageById(model.pageId)
-            .then(renderPage, errorPage);
+        function init() {
+            PageService
+                .findPageByWebsiteId(model.websiteId)
+                .then(renderPages, errorPage);
+
+            PageService
+                .findPageById(model.pageId)
+                .then(renderPage, errorPage);
+        }
+
+        init();
 
         //event handlers
         model.deletePage=deletePage;

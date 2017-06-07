@@ -5,6 +5,8 @@
 
     function RegisterController($location,userService) {
         var model=this;
+
+        //event handlers
         model.register = register;
 
 
@@ -22,28 +24,9 @@
                 return;
             }
             else {
-                //var user = userService.findUserByUsername(username);
                 userService
                     .findUserByUsername(username)
                     .then(renderUser, errorFindUser);
-
-                /*if(user === null)
-                 {
-                 var newuser = {
-                 username: username,
-                 password: password
-                 };
-                 //var usr = userService.createUser(newuser);
-                 userService
-                 .createUser(newuser)
-                 .then(redirectUser, errorUser);
-
-                 }
-                 else {
-                 model.error = "Sorry! Username " + username + " is already taken";
-                 return;
-                 }
-                 }*/
             }
 
             function renderUser(user) {
@@ -52,7 +35,6 @@
                         username: username,
                         password: password
                     };
-                    //var usr = userService.createUser(newuser);
                     userService
                         .createUser(newuser)
                         .then(redirectUser, errorUser);
@@ -62,7 +44,6 @@
                     model.error = "Sorry! Username  is already taken";
                     return;
                 }
-                //var usr = userService.createUser(newuser);
             }
 
             function errorFindUser() {
@@ -78,8 +59,6 @@
         function errorUser(user) {
             model.message='Could not register user';
         }
-
-
     }
 
 })();

@@ -9,10 +9,14 @@
         model.websiteId=$routeParams['wid'];
         model.pageId=$routeParams['pid'];
         model.widgetId=$routeParams['wgid'];
-        //model.widgets=WidgetService.findWidgetsByPageId(model.pageId);
-        WidgetService
-            .findWidgetsByPageId(model.pageId)
-            .then(renderWidgets, errorWidget);
+
+        function init() {
+            WidgetService
+                .findWidgetsByPageId(model.pageId)
+                .then(renderWidgets, errorWidget);
+        }
+
+        init();
 
         //event handlers
         model.trust = trust;

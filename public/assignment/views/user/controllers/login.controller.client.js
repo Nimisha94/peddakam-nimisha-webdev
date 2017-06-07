@@ -5,6 +5,8 @@
 
     function LoginController($location,userService) {
         var model=this;
+
+        //event handlers
         model.login = login;
 
 
@@ -14,7 +16,7 @@
                 model.message='Username is required';
                 return;
             }
-            //var found=userService.findUserByCredentials(username, password);
+
             userService
                 .findUserByCredentials(username,password)
                 .then(redirect,errorUser);
@@ -27,7 +29,6 @@
             }
             else {
                 $location.url('/user/' + user._id);
-                // $scope.message='welcome '+users[u].username;
             }
         }
 

@@ -7,14 +7,18 @@
         var model=this;
         model.userId=$routeParams['uid'];
         model.websiteId=$routeParams['wid'];
-        //model.websites=WebsiteService.findWebsitesByUser(model.userId);
-        WebsiteService
-            .findWebsitesByUser(model.userId)
-            .then(renderWebsites,errorWebsite);
-        //model.website=WebsiteService.findWebsiteById(model.websiteId);
-        WebsiteService
-            .findWebsiteById(model.websiteId)
-            .then(renderWebsite, errorWebsite);
+
+        function init() {
+            WebsiteService
+                .findWebsitesByUser(model.userId)
+                .then(renderWebsites,errorWebsite);
+
+            WebsiteService
+                .findWebsiteById(model.websiteId)
+                .then(renderWebsite, errorWebsite);
+        }
+
+        init();
 
         //event handlers
         model.deleteWebsite=deleteWebsite;
