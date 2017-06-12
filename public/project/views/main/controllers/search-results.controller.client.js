@@ -22,7 +22,7 @@
         function getSeriesDetailsbyId(index) {
             //var seriesId =
             console.log(index);
-            console.log(model.searchResults[index].id)
+            console.log(model.searchResults[index].id);
             $location.url('/search/'+model.searchText+'/'+model.searchResults[index].id+'/details');
         }
         function successSearch(searchResultsArr) {

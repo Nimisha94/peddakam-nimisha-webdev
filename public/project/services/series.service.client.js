@@ -99,7 +99,7 @@
             {
                 var obj = {
                     id: searchObj.results[i].id,
-                    name: searchObj.results[i].original_name,
+                    name: searchObj.results[i].name,
                     description: searchObj.results[i].overview,
                     posterPath : searchObj.results[i].poster_path,
                     rating: searchObj.results[i].vote_average

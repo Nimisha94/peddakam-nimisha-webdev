@@ -1,4 +1,4 @@
-
+<div class="topbar animated fadeInLeftBig"></div>
 <div class="navbar-wrapper">
     <div class="container-fluid">
         <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="top-nav">
@@ -24,11 +24,11 @@
                 <div class="navbar-collapse  collapse">
 
                     <ul class="nav navbar-nav navbar-right scroll">
-                        <li class="active"><a href="#works">Home</a></li>
-                        <li ><a href="#about">Trending</a></li>
-                        <li ><a href="#partners">Register</a></li>
-                        <li ><a href="#partners">Login</a></li>
-                        <li ><a href="#contact">Contact</a></li>
+                        <li class="active"><a href="#!/search" class="glyphicon glyphicon-search"></a></li>
+                        <li><a class="navbarhover" href="#works">Trending</a></li>
+                        <li ><a class="navbarhover" href="#!/register">Register</a></li>
+                        <li ><a class="navbarhover" href="#!/login">Login</a></li>
+                        <li ><a class="navbarhover" href="#contact">Contact</a></li>
                     </ul>
                     <!--<form class="navbar-form navbar-right" style="padding-top: 15px; padding-right: 150px">
                         <div class="form-group">
@@ -48,10 +48,11 @@
 
     <!--<ul class="list-group">-->
         <!--<li class="list-group-item">-->
-    <br>
-            <div class="container-fluid">
+
+            <div class="container-fluid" style="background-color: black; color:white">
+                <br/><br/>
                 <div align="middle">
-                    <img ng-src="https://image.tmdb.org/t/p/w300/{{model.details.poster_path}}">
+                    <img ng-src="https://image.tmdb.org/t/p/w300/{{model.details.poster_path}}" err-src="https://www.themoviedb.org/assets/static_cache/7f29bd8b3370c71dd379b0e8b570887c/images/no-poster-w185-v2.png">
                 </div>
                 <h3>{{model.details.name}}</h3>
                 <b>Genre:</b>
@@ -69,23 +70,23 @@
 </div>
 
 
-<!-- Footer Starts -->
+<!-- Footer Starts
 <div class="footer text-center spacer">
     <p class="wowload flipInX"><a href="#"><i class="fa fa-facebook fa-2x"></i></a> <a href="#"><i class="fa fa-instagram fa-2x"></i></a> <a href="#"><i class="fa fa-twitter fa-2x"></i></a> <a href="#"><i class="fa fa-flickr fa-2x"></i></a> </p>
     Project for Web Development at Northeastern University.
 </div>
-<!-- # Footer Ends -->
-<!--<a href="#works" class="gototop "><i class="fa fa-angle-up  fa-3x"></i></a>-->
+&lt;!&ndash; # Footer Ends &ndash;&gt;
+&lt;!&ndash;<a href="#works" class="gototop "><i class="fa fa-angle-up  fa-3x"></i></a>&ndash;&gt;
 
 
-<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+&lt;!&ndash; The Bootstrap Image Gallery lightbox, should be a child element of the document body &ndash;&gt;
 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
-    <!-- The container for the modal slides -->
+    &lt;!&ndash; The container for the modal slides &ndash;&gt;
     <div class="slides"></div>
-    <!-- Controls for the borderless lightbox -->
+    &lt;!&ndash; Controls for the borderless lightbox &ndash;&gt;
     <h3 class="title">Title</h3>
     <a class="prev">‹</a>
     <a class="next">›</a>
     <a class="close">×</a>
-    <!-- The modal dialog, which will be used to wrap the lightbox content -->
-</div>
+    &lt;!&ndash; The modal dialog, which will be used to wrap the lightbox content &ndash;&gt;
+</div>-->
