@@ -1,4 +1,5 @@
 var app=require('../../express');
+var userModel=require('../model/user/user.model.server');
 
 var users = [
     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -13,20 +14,28 @@ app.get ('/api/user', findUser);
 app.post ('/api/user', createUser);
 app.delete ('/api/user/:userId', deleteUser);
 
+
 function findUserById(req, res) {
     var userId = req.params['userId'];
-    for(var u in users) {
+    userModel.findUserById(userId)
+        .then(function (user) {
+            res.json(user);
+        }, function () {
+            res.json(null);
+        });
+    /*for(var u in users) {
         if(users[u]._id === userId) {
             res.json(users[u]);
             return;
         }
     }
-    res.json(null);
+    res.json(null);*/
 }
 
 function updateUser(req, res) {
     var user=req.body;
-    for(var u in users)
+    var userId=req.params.userId;
+    /*for(var u in users)
     {
         if(users[u]._id===req.params.userId)
         {
@@ -35,11 +44,18 @@ function updateUser(req, res) {
             return;
         }
     }
-    res.sendStatus(404);
+    res.sendStatus(404);*/
+    userModel.updateUser(userId,user)
+        .then(function () {
+            res.sendStatus(200);
+        }, function (err) {
+            res.sendStatus(404);
+        });
 }
 
 function deleteUser(req, res) {
-    var ind=null;
+    var userId=req.params.userId;
+    /*var ind=null;
     for(var u in users)
     {
         if(users[u]._id===req.params.userId)
@@ -56,14 +72,26 @@ function deleteUser(req, res) {
     else
     {
         res.sendStatus(404);
-    }
+    }*/
+    userModel.deleteUser(userId)
+        .then(function () {
+            res.sendStatus(200);
+        }, function (err) {
+            res.sendStatus(404);
+        });
 }
 
 function createUser(req, res) {
     var user=req.body;
-    user._id=(new Date().getTime()) + "";
-    users.push(user);
-    res.json(user);
+    userModel.createUser(user)
+        .then(function (user) {
+            res.json(user);
+        }, function (err) {
+            res.send(err);
+        });
+    // user._id=(new Date().getTime()) + "";
+    // users.push(user);
+    // res.json(user);
 }
 
 function findUser(req, res) {
@@ -82,7 +110,7 @@ function findUser(req, res) {
 function findUserByCredentials(req, res) {
    var username=req.query.username;
    var password=req.query.password;
-   for(var u in users)
+   /*for(var u in users)
     {
         if(users[u].username===username && users[u].password===password)
         {
@@ -90,12 +118,18 @@ function findUserByCredentials(req, res) {
             return;
         }
     }
-    res.json(null);
+    res.json(null);*/
+   userModel.findUserByCredentials(username, password)
+       .then(function (user) {
+           res.json(user);
+       }, function (err) {
+           res.json(null);
+       })
 }
 
 function findUserByUsername(req, res) {
     var username=req.query.username;
-    for(var u in users)
+    /*for(var u in users)
     {
         if(users[u].username===username)
         {
@@ -103,5 +137,11 @@ function findUserByUsername(req, res) {
             return;
         }
     }
-    res.json(null);
+    res.json(null);*/
+    userModel.findUserByUsername(username)
+        .then(function (user) {
+            res.json(user);
+        }, function () {
+            res.json(null);
+        });
 }

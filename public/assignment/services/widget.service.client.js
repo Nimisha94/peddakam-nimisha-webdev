@@ -19,6 +19,7 @@
             var url='/api/page/'+pageId+'/widget';
             return $http.post(url, widget)
                 .then(function (response) {
+                    console.log(response.data);
                     return response.data;
                 })
 
@@ -48,8 +49,8 @@
                })
         }
 
-        function deleteWidget(widgetId) {
-            var url='/api/widget/'+widgetId;
+        function deleteWidget(pageId, widgetId) {
+            var url='/api/page/'+pageId+'/widget/'+widgetId;
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;

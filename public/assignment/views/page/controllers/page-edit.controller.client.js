@@ -27,7 +27,7 @@
 
         function deletePage() {
             PageService
-                .deletePage(model.pageId)
+                .deletePage(model.websiteId,model.pageId)
                 .then(redirectDelete, errorPage);
         }
 

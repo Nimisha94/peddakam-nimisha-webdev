@@ -26,7 +26,7 @@
         
         function deleteWebsite() {
             WebsiteService
-                .deleteWebsite(model.websiteId)
+                .deleteWebsite(model.userId,model.websiteId)
                 .then(redirectWebsite, errorWebsite);
         }
 

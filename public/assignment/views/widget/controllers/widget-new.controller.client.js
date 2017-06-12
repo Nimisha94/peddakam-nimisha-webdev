@@ -14,15 +14,29 @@
         model.createhtml=createhtml;
         model.createImage=createImage;
         model.createYouTube=createYouTube;
+        model.createText=createText;
 
         function createHeading() {
             var heading={
-                widgetType:"HEADING",
+                type:"HEADING",
                 size:1,
                 text:""
             };
             WidgetService
                 .createWidget(model.pageId, heading)
+                .then(redirect, errorWidget);
+        }
+
+        function createText() {
+            var text={
+                type:"TEXT",
+                text:"",
+                rows:0,
+                placeholder:"",
+                formatted:false
+            };
+            WidgetService
+                .createWidget(model.pageId, text)
                 .then(redirect, errorWidget);
         }
 
@@ -36,7 +50,7 @@
 
         function createhtml() {
             var html={
-                widgetType:"HTML",
+                type:"HTML",
                 text:""
             };
             WidgetService
@@ -46,7 +60,7 @@
 
         function createImage() {
             var image={
-                widgetType:"IMAGE",
+                type:"IMAGE",
                 width:"100%",
                 url:""
             };
@@ -57,7 +71,7 @@
 
         function createYouTube() {
             var youtube={
-                widgetType:"YOUTUBE",
+                type:"YOUTUBE",
                 width:"100%",
                 url:""
             };

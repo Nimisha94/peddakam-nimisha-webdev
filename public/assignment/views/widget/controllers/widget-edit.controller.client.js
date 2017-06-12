@@ -23,14 +23,19 @@
         model.deleteWidget=deleteWidget;
         model.editImage=editImage;
         model.editYouTube=editYouTube;
+        model.editHtml=editHtml;
+        model.editText=editText;
 
         function renderWidget(widget) {
             model.widget=widget;
-            model.name=model.widget.widgetType;
+            model.name=model.widget.type;
             model.text=model.widget.text;
             model.size=model.widget.size;
             model.url=model.widget.url;
             model.width=model.widget.width;
+            model.rows=model.widget.rows;
+            model.placeholder=model.widget.placeholder;
+            model.formatted=model.widget.formatted;
         }
 
         function errorWidget() {
@@ -40,8 +45,8 @@
         function editHeading() {
             var wdgt={
                     _id:model.widget._id,
-                    widgetType:model.name,
-                    pageId:model.widget.pageId,
+                    type:model.name,
+                    _page:model.widget._page,
                     text:model.text,
                     size:model.size
             };
@@ -50,11 +55,39 @@
                 .then(redirectWidget, errorWidget);
         }
 
+        function editHtml() {
+            var wdgthtml={
+                _id:model.widget._id,
+                type:model.name,
+                _page:model.widget._page,
+                text:model.text,
+                size: model.size
+            };
+            WidgetService
+                .updateWidget(model.widgetId,wdgthtml)
+                .then(redirectWidget, errorWidget);
+        }
+
+        function editText() {
+            var wdgttext={
+                _id:model.widget._id,
+                type:model.name,
+                _page:model.widget._page,
+                text:model.text,
+                rows:model.rows,
+                placeholder:model.placeholder,
+                formatted:model.formatted
+            };
+            WidgetService
+                .updateWidget(model.widgetId,wdgttext)
+                .then(redirectWidget, errorWidget);
+        }
+
         function editImage() {
             var wdImage={
                 _id:model.widget._id,
-                widgetType:model.name,
-                pageId:model.widget.pageId,
+                type:model.name,
+                _page:model.widget._page,
                 width:model.width,
                 url:model.url
             };
@@ -66,8 +99,8 @@
         function editYouTube() {
             var youtube={
                 _id: model.widget._id,
-                widgetType:model.name,
-                pageId:model.pageId,
+                type:model.name,
+                _page:model._page,
                 width:model.width,
                 url:model.url
             };
@@ -82,7 +115,7 @@
 
         function deleteWidget() {
             WidgetService
-                .deleteWidget(model.widgetId)
+                .deleteWidget(model.pageId, model.widgetId)
                 .then(redirectWidget, errorWidget);
         }
 
