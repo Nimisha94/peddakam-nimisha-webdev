@@ -2,6 +2,7 @@ var userSchema=require('./user.schema.server');
 var mongoose=require('mongoose');
 var userModel=mongoose.model('UserModel', userSchema);
 
+
 userModel.createUser=createUser;
 userModel.findUserById=findUserById;
 userModel.findUserByUsername=findUserByUsername;

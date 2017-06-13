@@ -9,6 +9,7 @@ widgetModel.findWidgetById=findWidgetById;
 widgetModel.updateWidget=updateWidget;
 widgetModel.deleteWidget=deleteWidget;
 widgetModel.reorderWidget=reorderWidget;
+//widgetModel.deleteWidgets=deleteWidgets;
 
 module.exports=widgetModel;
 
@@ -53,6 +54,14 @@ function deleteWidget(pageId, widgetId) {
                 .deleteWidget(pageId, widgetId);
         });
 }
+
+/*function deleteWidgets(widgets) {
+    for(var w in widgets)
+    {
+        widgetModel.remove({_id:widgets[w]});
+    }
+    return;
+}*/
 
 function reorderWidget(pageId, startInd, endInd) {
     return widgetModel.find({_page:pageId}, function (err, widgets) {

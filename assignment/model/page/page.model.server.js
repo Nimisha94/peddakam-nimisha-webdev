@@ -2,6 +2,7 @@ var pageSchema=require('./page.schema.server');
 var mongoose=require('mongoose');
 var pageModel=mongoose.model('PageModel', pageSchema);
 var websiteModel=require('../website/website.model.server');
+//var widgetModel=require('../widget/widget.model.server');
 
 pageModel.createPage=createPage;
 pageModel.findAllPagesForWebsite=findAllPagesForWebsite;
@@ -10,6 +11,7 @@ pageModel.updatePage=updatePage;
 pageModel.deletePage=deletePage;
 pageModel.addWidget=addWidget;
 pageModel.deleteWidget=deleteWidget;
+//pageModel.deletePages=deletePages;
 
 module.exports=pageModel;
 
@@ -64,5 +66,21 @@ function deletePage(websiteId,pageId) {
         .then(function (page) {
             return websiteModel
                 .deletePage(websiteId, pageId);
+                /*.then(function (page) {
+                    return widgetModel.deleteWidgets(page.widgets);
+                });*/
         });
 }
+
+/*
+function deletePages(pageIds) {
+    for(var p in pageIds)
+    {
+        pageModel.remove({_id: pageIds[p]})
+            .then(function (page) {
+                widgetModel.deleteWidgets(page.widgets);
+            });
+
+    }
+    return;
+}*/
