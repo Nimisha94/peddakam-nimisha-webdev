@@ -5,6 +5,10 @@ var userSchema = mongoose.Schema({
     password : String,
     firstName : String,
     lastName : String,
+    google: {
+        id:    String,
+        token: String
+    },
     email : String,
     phone : String,
     websites : [{type: mongoose.Schema.Types.ObjectId, ref: "WebsiteModel"}],

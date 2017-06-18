@@ -3,9 +3,10 @@
         .module('WebAppMaker')
         .controller('FlickrImageSearchController',FlickrImageSearchController);
 
-    function FlickrImageSearchController($routeParams, FlickrService, WidgetService, $location) {
+    function FlickrImageSearchController($routeParams, FlickrService, currentUser, WidgetService, $location) {
         var model=this;
-        model.userId=$routeParams['uid'];
+        //model.userId=$routeParams['uid'];
+        model.userId=currentUser._id;
         model.websiteId=$routeParams['wid'];
         model.pageId=$routeParams['pid'];
         model.widgetId=$routeParams['wgid'];
@@ -42,7 +43,7 @@
                 .then(redirectWidget, errorWidget);
 
             function redirectWidget() {
-                $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/"+model.widgetId);
+                $location.url("/website/"+model.websiteId+"/page/"+model.pageId+"/widget/"+model.widgetId);
             }
         }
 
@@ -52,7 +53,7 @@
         }
 
         function errorWidget() {
-            model.message='Error occured. Ty again later.';
+            model.message='Error occured. Try again later.';
         }
 
     }

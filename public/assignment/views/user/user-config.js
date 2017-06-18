@@ -15,10 +15,31 @@
                 controller:'RegisterController',
                 controllerAs:'model'
             })
-            .when('/user/:uid',{
+            .when('/profile',{
                 templateUrl:'views/user/templates/profile.view.client.html',
                 controller:'ProfileController',
-                controllerAs:'model'
+                controllerAs:'model',
+                resolve:{
+                    currentUser:checkLoggedIn
+                }
             });
+    }
+    
+    function checkLoggedIn(userService, $q, $location) {
+        var deferred=$q.defer();
+        userService
+            .loggedIn()
+            .then(function (user) {
+                if(user==='0')
+                {
+                    deferred.reject();
+                    $location.url('/login');
+                }
+                else
+                {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
     }
 })();

@@ -3,9 +3,10 @@
         .module('WebAppMaker')
         .controller('WidgetListController',WidgetListController);
 
-    function WidgetListController($routeParams, $sce, WidgetService) {
+    function WidgetListController($routeParams, $sce, currentUser, WidgetService) {
         var model=this;
-        model.userId=$routeParams['uid'];
+        //model.userId=$routeParams['uid'];
+        model.userId=currentUser._id;
         model.websiteId=$routeParams['wid'];
         model.pageId=$routeParams['pid'];
         model.widgetId=$routeParams['wgid'];

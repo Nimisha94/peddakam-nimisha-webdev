@@ -11,15 +11,31 @@
 
 
         function login(username, password) {
-            if(username==''||username===null||typeof username === 'undefined')
+            if(username===''&&password==='')
+            {
+                model.message='Username and password are required';
+                return;
+            }
+            else if(typeof username==='undefined'&&typeof password==='undefined')
+            {
+                model.message='Username and password are required';
+                return;
+            }
+            else if(username==''||username===null||typeof username === 'undefined')
             {
                 model.message='Username is required';
                 return;
             }
-
-            userService
-                .findUserByCredentials(username,password)
-                .then(redirect,errorUser);
+            else if(password==''|| typeof username==='undefined')
+            {
+                model.message='Password is required';
+                return;
+            }
+            else {
+                userService
+                    .login(username, password)
+                    .then(redirect, errorUser);
+            }
         }
 
         function redirect(user){
@@ -28,12 +44,12 @@
                 model.message='Invalid credentials';
             }
             else {
-                $location.url('/user/' + user._id);
+                $location.url('/profile');
             }
         }
 
         function errorUser() {
-            model.message='Error occured. Try again later';
+            model.message='Invalid credentials';
         }
     }
 })();

@@ -4,7 +4,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="wd-navbar-edit navbar-brand pull-left">
                         <a class="wd-gly-left"
-                           ng-href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                           ng-href="#!/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
                             <span class="glyphicon glyphicon-chevron-left"></span>
                         </a>
                         Widget Edit
@@ -22,9 +22,9 @@
     </nav>
 
     <div class="container-fluid">
-
+        <div ng-show="model.message" class="alert alert-danger">{{model.message}}</div>
         <label for="name">Name</label>
-        <input class="form-control"
+        <input readonly class="form-control"
                ng-model="model.name"
                placeholder="facebook"
                value="top heading"
@@ -59,7 +59,7 @@
     <nav class="pagenavbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
             <div class="navbar-text pull-right">
-                <a ng-href="#!/user/{{model.userId}}">
+                <a ng-href="#!/profile">
                     <span class="wd-gly-widget-user glyphicon glyphicon-user"></span>
                 </a>
             </div>

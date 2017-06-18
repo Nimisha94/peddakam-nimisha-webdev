@@ -3,9 +3,10 @@
         .module('WebAppMaker')
         .controller('NewPageController',NewPageController);
 
-    function NewPageController($routeParams, $location, PageService) {
+    function NewPageController($routeParams, currentUser, $location, PageService) {
         var model=this;
-        model.userId=$routeParams['uid'];
+        //model.userId=$routeParams['uid'];
+        model.userId=currentUser._id;
         model.websiteId=$routeParams['wid'];
 
         function init() {
@@ -39,7 +40,7 @@
         }
 
         function redirectPage() {
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+            $location.url('/website/'+model.websiteId+'/page');
         }
 
         function errorPage() {

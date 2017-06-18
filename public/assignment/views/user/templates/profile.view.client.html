@@ -5,7 +5,7 @@
                 </div>
 
                 <div class="navbar-brand pull-right">
-                    <a ng-click="model.update()" href="#!/user/{{model.userId}}">
+                    <a ng-click="model.update()" href="#!/profile">
                         <span class="wd-profile-gly glyphicon glyphicon-ok"></span>
                     </a>
                 </div>
@@ -59,15 +59,15 @@
     </form>
 
     <a class="btn btn-primary btn-block"
-       ng-href="#!/user/{{model.userId}}/website">Websites</a>
+       ng-href="#!/website">Websites</a>
     <a class="btn btn-danger  btn-block"
-       href="#!/login">Logout</a>
+       ng-click="model.logout()">Logout</a>
 </div>
 
 <nav class="navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#!/user/{{model.userId}}">
+            <a href="#!/profile">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

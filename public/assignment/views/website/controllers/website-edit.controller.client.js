@@ -3,9 +3,10 @@
         .module('WebAppMaker')
         .controller('EditWebsiteController',EditWebsiteController);
     
-    function EditWebsiteController($routeParams, $location, WebsiteService) {
+    function EditWebsiteController($routeParams, currentUser, $location, WebsiteService) {
         var model=this;
-        model.userId=$routeParams['uid'];
+        //model.userId=$routeParams['uid'];
+        model.userId=currentUser._id;
         model.websiteId=$routeParams['wid'];
 
         function init() {
@@ -46,13 +47,20 @@
         }
 
         function updateWebsite() {
-            WebsiteService
-                .updateWebsite(model.websiteId,model.website)
-                .then(redirectWebsite, errorWebsite);
+            if(model.website.name === ''||model.website.name === null||typeof model.website.name ==='undefined')
+            {
+                model.message='Website name should be given';
+                return;
+            }
+            else {
+                WebsiteService
+                    .updateWebsite(model.websiteId, model.website)
+                    .then(redirectWebsite, errorWebsite);
+            }
         }
 
         function redirectWebsite() {
-            $location.url('/user/'+model.userId+'/website');
+            $location.url('/website');
         }
 
         function errorWebsite() {

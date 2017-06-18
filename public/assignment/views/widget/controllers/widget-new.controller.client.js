@@ -3,9 +3,10 @@
         .module('WebAppMaker')
         .controller('NewWidgetController',NewWidgetController);
 
-    function NewWidgetController($routeParams, $location, WidgetService) {
+    function NewWidgetController($routeParams, currentUser, $location, WidgetService) {
         var model=this;
-        model.userId=$routeParams['uid'];
+        //model.userId=$routeParams['uid'];
+        model.userId=currentUser._id;
         model.websiteId=$routeParams['wid'];
         model.pageId=$routeParams['pid'];
 
@@ -41,7 +42,7 @@
         }
 
         function redirect(wdgt) {
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wdgt._id);
+            $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wdgt._id);
         }
 
         function errorWidget() {

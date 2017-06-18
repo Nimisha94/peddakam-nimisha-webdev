@@ -36,7 +36,7 @@
                         password: password
                     };
                     userService
-                        .createUser(newuser)
+                        .register(newuser)
                         .then(redirectUser, errorUser);
                 }
                 else
@@ -53,7 +53,7 @@
         }
 
         function redirectUser(user) {
-            $location.url('/user/' + user._id);
+            $location.url('/profile');
         }
 
         function errorUser(user) {
