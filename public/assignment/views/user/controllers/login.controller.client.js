@@ -21,12 +21,12 @@
                 model.message='Username and password are required';
                 return;
             }
-            else if(username==''||username===null||typeof username === 'undefined')
+            else if(username===''||username===null||typeof username === 'undefined')
             {
                 model.message='Username is required';
                 return;
             }
-            else if(password==''|| typeof username==='undefined')
+            else if(password===''|| typeof password==='undefined')
             {
                 model.message='Password is required';
                 return;

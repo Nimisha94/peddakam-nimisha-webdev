@@ -1,5 +1,4 @@
 <div ng-switch="model.widget.type">
-    <div ng-show="model.message" class="alert alert-danger">{{model.message}}</div>
     <div ng-switch-when="HEADING">
         <div ng-include="'views/widget/templates/widget-heading-edit.view.client.html'"></div>
     </div>

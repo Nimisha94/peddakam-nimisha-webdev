@@ -50,7 +50,6 @@
             if(model.website.name === ''||model.website.name === null||typeof model.website.name ==='undefined')
             {
                 model.message='Website name should be given';
-                return;
             }
             else {
                 WebsiteService
