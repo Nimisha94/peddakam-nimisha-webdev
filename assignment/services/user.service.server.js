@@ -5,10 +5,15 @@ var passport=require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 passport.use(new LocalStrategy(localStrategy));
-var googleConfig = {
+/*var googleConfig = {
     clientID     : process.env.GOOGLE_CLIENT_ID,
     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
     callbackURL  : process.env.GOOGLE_CALLBACK_URL
+};*/
+var googleConfig = {
+    clientID     : '954054378440-f76pqaib389fbd9i50l9k0mho2uov866.apps.googleusercontent.com',
+    clientSecret : 'OyZssJHhvwB6vhJPqBOCf7ag',
+    callbackURL  : 'http://localhost:4000/auth/google/callback'
 };
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 passport.serializeUser(serializeUser);
