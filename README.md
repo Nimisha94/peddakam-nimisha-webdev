@@ -13,5 +13,8 @@ This is the link to my project:
 This is the link to my assignment:
 [Assignment Home Page](https://webdev-summer1-2017.herokuapp.com/assignment/index.html)
 
+This is the link to my project repository:
+[Project Repository](https://github.com/Nimisha94/webdev_project_trendtv)
+
 
 
